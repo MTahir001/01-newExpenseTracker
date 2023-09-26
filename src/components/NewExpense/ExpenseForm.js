@@ -1,6 +1,6 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [userInput, setUserInput] = useState({
     enteredTitle: "",
     enteredAmount: "",
@@ -39,6 +39,12 @@ const ExpenseForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log(userInput);
+
+    //Passing data upward direction child->parent
+    props.onSaveExpenseData(userInput);
+
+    //clearing the screen fields and reseting obj to empty str -> using TWO-WAY binding
     setUserInput({
       enteredTitle: "",
       enteredAmount: "",
