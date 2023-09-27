@@ -75,7 +75,6 @@ const ExpenseForm = (props) => {
 
   //_____________________________
 
-  console.log(userInput);
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
