@@ -10,6 +10,7 @@ const ExpenseForm = (props) => {
   //_____________________________Handling via single function and SWITCH statements
 
   const inputChangeHandler = (identifier, value) => {
+    console.log(value);
     switch (identifier) {
       case "title":
         {
@@ -31,7 +32,7 @@ const ExpenseForm = (props) => {
       default: {
         setUserInput((prev) => {
           console.log(userInput);
-          return { ...prev, enteredDate: value };
+          return { ...prev, enteredDate: new Date(value) };
         });
       }
     }
