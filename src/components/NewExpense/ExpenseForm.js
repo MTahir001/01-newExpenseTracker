@@ -2,9 +2,9 @@ import "./ExpenseForm.css";
 import { useState } from "react";
 const ExpenseForm = (props) => {
   const [userInput, setUserInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
+    title: "",
+    amount: "",
+    date: "",
   });
 
   //_____________________________Handling via single function and SWITCH statements
@@ -14,8 +14,7 @@ const ExpenseForm = (props) => {
       case "title":
         {
           setUserInput((prev) => {
-            // console.log(userInput);
-            return { ...prev, enteredTitle: value };
+            return { ...prev, title: value };
           });
         }
 
@@ -23,20 +22,19 @@ const ExpenseForm = (props) => {
       case "amount":
         {
           setUserInput((prev) => {
-            console.log(userInput);
-            return { ...prev, enteredAmount: value };
+            return { ...prev, amount: value };
           });
         }
         break;
       default: {
         setUserInput((prev) => {
-          console.log(userInput);
-          return { ...prev, enteredDate: value };
+          return { ...prev, date: value };
         });
       }
     }
   };
 
+  console.log(userInput);
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(userInput);
@@ -46,9 +44,9 @@ const ExpenseForm = (props) => {
 
     //clearing the screen fields and reseting obj to empty str -> using TWO-WAY binding
     setUserInput({
-      enteredTitle: "",
-      enteredAmount: "",
-      enteredDate: "",
+      title: "",
+      amount: "",
+      date: "",
     });
   };
 
@@ -57,19 +55,19 @@ const ExpenseForm = (props) => {
   //   const titleChangeHandler = (event) => {
   //     setUserInput((prev) => {
   //       console.log(userInput);
-  //       return { ...prev, enteredTitle: event.target.value };
+  //       return { ...prev, title: event.target.value };
   //     });
   //   };
   //   const amountChangeHandler = (event) => {
   //     setUserInput((prev) => {
   //       console.log(userInput);
-  //       return { ...prev, enteredAmount: event.target.value };
+  //       return { ...prev, amount: event.target.value };
   //     });
   //   };
   //   const dateChangeHandler = (event) => {
   //     setUserInput((prev) => {
   //       console.log(userInput);
-  //       return { ...prev, enteredDate: event.target.value };
+  //       return { ...prev, date: event.target.value };
   //     });
   //   };
 
@@ -82,7 +80,7 @@ const ExpenseForm = (props) => {
           <label>Title</label>
           <input
             type="text"
-            value={userInput.enteredTitle}
+            value={userInput.title}
             onChange={(event) => {
               inputChangeHandler("title", event.target.value);
             }}
@@ -92,7 +90,7 @@ const ExpenseForm = (props) => {
           <label>Amount</label>
           <input
             type="number"
-            value={userInput.enteredAmount}
+            value={userInput.amount}
             min="0.01"
             step="0.01"
             onChange={(event) => {
@@ -104,7 +102,7 @@ const ExpenseForm = (props) => {
           <label>Date</label>
           <input
             type="date"
-            value={userInput.enteredDate}
+            value={userInput.date}
             min="2019-01-01"
             max="2022-12-31"
             onChange={(event) => {
