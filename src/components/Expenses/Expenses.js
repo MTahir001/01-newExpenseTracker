@@ -9,6 +9,15 @@ function Expenses(props) {
   const filteredChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
+
+  const filteredArray = props.items.filter((e) => {
+    //the date is in STRING format as "yyyy-mm-dd"
+    //slice used to selct yyyy only, and math with filteredYear
+
+    return e.date.slice(0, 4) === filteredYear;
+  });
+
+  console.log(filteredArray);
   return (
     <div>
       <Card className="expenses">
@@ -17,7 +26,7 @@ function Expenses(props) {
           onChangeFilter={filteredChangeHandler}
         />
 
-        {props.items.map((expense) => (
+        {filteredArray.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
