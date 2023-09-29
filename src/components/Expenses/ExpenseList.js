@@ -4,7 +4,7 @@ const ExpenseList = (props) => {
   if (props.expenseArray.length === 0) {
     return (
       <h2 className="expenses-list__fallback">
-        No expenses found for {props.expenseYear} year
+        No expenses found for year {props.expenseYear}
       </h2>
     );
   }

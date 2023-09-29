@@ -22,7 +22,7 @@ const ExpenseForm = (props) => {
       case "amount":
         {
           setUserInput((prev) => {
-            return { ...prev, amount: value };
+            return { ...prev, amount: +value };
           });
         }
         break;
