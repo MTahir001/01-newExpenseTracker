@@ -34,13 +34,15 @@ const ExpenseForm = (props) => {
     }
   };
 
-  console.log(userInput);
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(userInput);
 
     //Passing data upward direction child->parent
     props.onSaveExpenseData(userInput);
+
+    //On adding expense, to close the input fields
+    props.onClickCancel();
 
     //clearing the screen fields and reseting obj to empty str -> using TWO-WAY binding
     setUserInput({
@@ -111,6 +113,7 @@ const ExpenseForm = (props) => {
           />
         </div>
         <div className="new-expense__actions">
+          <button onClick={props.onClickCancel}>Cancel</button>
           <button type="submit">Add Expense</button>
         </div>
       </div>
