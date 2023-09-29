@@ -17,6 +17,20 @@ function Expenses(props) {
     return e.date.slice(0, 4) === filteredYear;
   });
 
+  let expensesContent =
+    filteredArray.length === 0 ? (
+      <p>No expenses found for {filteredYear} year</p>
+    ) : (
+      filteredArray.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      ))
+    );
+
   console.log(filteredArray);
   return (
     <div>
@@ -26,14 +40,7 @@ function Expenses(props) {
           onChangeFilter={filteredChangeHandler}
         />
 
-        {filteredArray.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {expensesContent}
       </Card>
     </div>
   );
