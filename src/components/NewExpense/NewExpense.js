@@ -8,7 +8,6 @@ const NewExpense = (props) => {
       ...enteredExpenseData,
       id: Math.random().toString(),
     };
-    console.log(expenseData, enteredExpenseData);
 
     props.onAddExpense(expenseData);
   };
@@ -23,14 +22,12 @@ const NewExpense = (props) => {
 
   return (
     <div className="new-expense">
-      {!isOpen ? <button onClick={expenseFormHandler}>Add Expense</button> : ""}
-      {isOpen ? (
+      {!isOpen && <button onClick={expenseFormHandler}>Add Expense</button>}
+      {isOpen && (
         <ExpenseForm
           onSaveExpenseData={saveExpenseDataHandler}
           onClickCancel={cancelHandelr}
         />
-      ) : (
-        ""
       )}
     </div>
   );
